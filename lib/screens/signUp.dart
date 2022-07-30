@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, prefer_final_fields
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_authentication/reusable_widget/reusableWidget.dart';
 import 'package:firebase_authentication/utils/colors.dart';
 import 'package:firebase_authentication/utils/routes.dart';
@@ -67,8 +68,16 @@ class _SignUpState extends State<SignUp> {
                   const SizedBox(
                     height: 20,
                   ),
-                  signInSignUpButton(context, false,
-                      () => Navigator.pushNamed(context, MyRoute.homeRoute)),
+                  signInSignUpButton(
+                    context,
+                    false,
+                    () => {
+                      FirebaseAuth.instance.createUserWithEmailAndPassword(
+                          email: _emailTextController.text,
+                          password: _passwordTextController.text),
+                      Navigator.pushNamed(context, MyRoute.homeRoute)
+                    },
+                  ),
                 ],
               ),
             ),
