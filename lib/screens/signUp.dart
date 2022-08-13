@@ -58,8 +58,8 @@ class _SignUpState extends State<SignUp> {
                   const SizedBox(
                     height: 20,
                   ),
-                  reusableTextField("Enter Email Id", Icons.lock_outline, true,
-                      _emailTextController),
+                  reusableTextField("Enter Email Id", Icons.person_outline,
+                      false, _emailTextController),
                   const SizedBox(
                     height: 20,
                   ),
@@ -72,10 +72,16 @@ class _SignUpState extends State<SignUp> {
                     context,
                     false,
                     () => {
-                      FirebaseAuth.instance.createUserWithEmailAndPassword(
-                          email: _emailTextController.text,
-                          password: _passwordTextController.text),
-                      Navigator.pushNamed(context, MyRoute.homeRoute)
+                      FirebaseAuth.instance
+                          .createUserWithEmailAndPassword(
+                              email: _emailTextController.text,
+                              password: _passwordTextController.text)
+                          .then((value) {
+                        print("Created New Account");
+                        Navigator.pushNamed(context, MyRoute.homeRoute);
+                      }).onError((error, stackTrace) {
+                        print("Error ${error.toString()}");
+                      }),
                     },
                   ),
                 ],
