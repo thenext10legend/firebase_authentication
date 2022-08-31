@@ -47,8 +47,9 @@ class _SignInState extends State<SignIn> {
                 reusableTextField("Enter Password", Icons.lock_outline, true,
                     _passwordTextController),
                 const SizedBox(
-                  height: 20,
+                  height: 5,
                 ),
+                forgetPassword(context),
                 signInSignUpButton(context, true, () {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
@@ -88,6 +89,22 @@ class _SignInState extends State<SignIn> {
           ),
         )
       ],
+    );
+  }
+
+  Widget forgetPassword(BuildContext) {
+    return Container(
+      width: MediaQuery.of(context).size.width,
+      height: 35,
+      alignment: Alignment.bottomRight,
+      child: TextButton(
+        onPressed: () {},
+        child: Text(
+          "Forgot Password?",
+          style: TextStyle(color: Colors.white70),
+          textAlign: TextAlign.center,
+        ),
+      ),
     );
   }
 }
