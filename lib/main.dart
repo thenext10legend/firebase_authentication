@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:firebase_authentication/screens/home.dart';
+import 'package:firebase_authentication/screens/reset_password.dart';
 import 'package:firebase_authentication/screens/signIn.dart';
 import 'package:firebase_authentication/screens/signUp.dart';
 import 'package:firebase_authentication/utils/routes.dart';
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         MyRoute.homeRoute: (context) => Home(),
         MyRoute.signInRoute: (context) => SignIn(),
         MyRoute.signUpRoute: (context) => SignUp(),
+        MyRoute.resetPasswordRoute: (context) => ResetPassword(),
       },
     );
   }

@@ -50,7 +50,7 @@ class _SignInState extends State<SignIn> {
                   height: 5,
                 ),
                 forgetPassword(context),
-                signInSignUpButton(context, true, () {
+                firebaseButton(context, "Sign In", () {
                   FirebaseAuth.instance
                       .signInWithEmailAndPassword(
                           email: _emailTextController.text,
@@ -98,7 +98,8 @@ class _SignInState extends State<SignIn> {
       height: 35,
       alignment: Alignment.bottomRight,
       child: TextButton(
-        onPressed: () {},
+        onPressed: () =>
+            Navigator.pushNamed(context, MyRoute.resetPasswordRoute),
         child: Text(
           "Forgot Password?",
           style: TextStyle(color: Colors.white70),

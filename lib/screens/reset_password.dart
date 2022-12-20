@@ -6,17 +6,15 @@ import 'package:firebase_authentication/utils/colors.dart';
 import 'package:firebase_authentication/utils/routes.dart';
 import 'package:flutter/material.dart';
 
-class SignUp extends StatefulWidget {
-  const SignUp({Key? key}) : super(key: key);
+class ResetPassword extends StatefulWidget {
+  const ResetPassword({Key? key}) : super(key: key);
 
   @override
-  State<SignUp> createState() => _SignUpState();
+  State<ResetPassword> createState() => _ResetPasswordState();
 }
 
-class _SignUpState extends State<SignUp> {
+class _ResetPasswordState extends State<ResetPassword> {
   TextEditingController _emailTextController = TextEditingController();
-  TextEditingController _passwordTextController = TextEditingController();
-  TextEditingController _userNameTextController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +29,7 @@ class _SignUpState extends State<SignUp> {
                 color: Colors.white,
               )),
           title: Text(
-            "SignUp",
+            "Reset Password",
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
         ),
@@ -53,37 +51,12 @@ class _SignUpState extends State<SignUp> {
                   SizedBox(
                     height: 20,
                   ),
-                  reusableTextField("Enter Username", Icons.person_outline,
-                      false, _userNameTextController),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   reusableTextField("Enter Email Id", Icons.person_outline,
                       false, _emailTextController),
                   const SizedBox(
                     height: 20,
                   ),
-                  reusableTextField("Enter Password", Icons.lock_outline, true,
-                      _passwordTextController),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  firebaseButton(
-                    context,
-                    "Sign Up",
-                    () => {
-                      FirebaseAuth.instance
-                          .createUserWithEmailAndPassword(
-                              email: _emailTextController.text,
-                              password: _passwordTextController.text)
-                          .then((value) {
-                        print("Created New Account");
-                        Navigator.pushNamed(context, MyRoute.homeRoute);
-                      }).onError((error, stackTrace) {
-                        print("Error ${error.toString()}");
-                      }),
-                    },
-                  ),
+                  firebaseButton(context, "Reset Password", () {})
                 ],
               ),
             ),
